@@ -423,8 +423,13 @@
 			 * Retrns true when there is at least 1 character selected in the editor
 			 */
 			is_text_selected = function (editor) {
-				var text = editor.getSelection().getSelectedText();
-				return text != '';
+				var selection = editor.getSelection();
+				var element = selection.getStartElement();
+				if(element.getAscendant('table', true)) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 
