@@ -276,12 +276,12 @@
 			editor.addCommand( 'showFloatingTools', {
 				exec : function( editor ) {
 					if (is_text_selected(editor)) {
-						toolbar = get_element();
+						toolbar = get_element(editor);
 						unfocus_toolbar();
 						toolbar.show();
 
 						// Get the size of the toolbar
-						size = get_toolbar_size()
+						size = get_toolbar_size(editor)
 						// Get the offset of the editor
 						offset = get_editor_offset();
 						// Get the mouse position
@@ -406,9 +406,9 @@
 			/**
 			 * Returns the size of the floating toolbar
 			 */
-			get_toolbar_size = function() {
+			get_toolbar_size = function(editor) {
 				if (! editor.floatingtools.toolbarsize) {
-					var obj = get_element();
+					var obj = get_element(editor);
 					editor.floatingtools.toolbarsize = {
 						width: obj.$.offsetWidth,
 						height: obj.$.offsetHeight
